@@ -192,6 +192,7 @@ class Loader {
        */
       if ( apply_filters('seravo_show_reports_page', true) ) {
         require_once dirname( __FILE__ ) . '/modules/reports.php';
+        require_once dirname( __FILE__ ) . '/modules/security.php';
       }
 
       /*
