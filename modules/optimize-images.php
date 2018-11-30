@@ -55,7 +55,7 @@ if ( ! class_exists('Optimize_Images') ) {
       );
 
       add_settings_field(
-        'seravo-images-enabled-field', __( 'Limit Image Resolution', 'seravo' ),
+        'seravo-images-enabled-field', __( 'Optimize Images', 'seravo' ),
         array( __CLASS__, 'seravo_image_enabled_field' ), 'optimize_images_settings', 'seravo-optimize-images-settings'
       );
       add_settings_field(
@@ -115,8 +115,12 @@ if ( ! class_exists('Optimize_Images') ) {
     }
 
     public static function optimize_images_settings_description() {
-      _e('Change the maximum image size for your site. Using a smaller image size
-      significantly improves site performance and saves disk space.', 'seravo');
+      _e('You have the option to enable your server to compress your images.
+      This option changes the images in your /uploads -folder.
+      <p> The compression is run only once for each image.</p>
+      By setting a maximum image resolution, you can determine the maximum allowed dimensions for images.
+      <p> For further reading, <a href="https://seravo.com/docs/get-started/available-commands/#wp-optimize-images">
+      our developer documentation</a></p>', 'seravo');
     }
 
     public static function sanitize_image_width( $width ) {
@@ -145,7 +149,7 @@ if ( ! class_exists('Optimize_Images') ) {
       if ( get_option( 'seravo-enable-optimize-images' ) === 'on' ) {
         return array( 'max-resolution-field', '' );
       }
-      return array( 'max-resolution-field-disabled', 'hidden' );
+      return array( 'max-resolution-field', 'disabled=""' );
     }
 
     public static function optimize_images_postbox() {
